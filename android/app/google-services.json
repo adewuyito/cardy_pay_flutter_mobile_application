@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "325491097778",
+    "project_id": "cardy-project",
+    "storage_bucket": "cardy-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:325491097778:android:500837675b30e125a789ab",
+        "android_client_info": {
+          "package_name": "com.qbase.cardy_pay_mobile_application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "325491097778-3cehadc94mrqvn73ideqmudn0sd2jk0v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCn0r-n1k0bzb39TCcJlB4QanpHPbmPD6s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "325491097778-3cehadc94mrqvn73ideqmudn0sd2jk0v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "325491097778-6u5jthtull2gp4g5c7j6thsm23qe398l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.qbase.cardyPayMobileApplication"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
