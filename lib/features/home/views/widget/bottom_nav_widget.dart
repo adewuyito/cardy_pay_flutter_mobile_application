@@ -32,7 +32,7 @@ class NavWidget extends ConsumerWidget {
             child: Padding(
               padding: const EdgeInsets.all(5.0),
               child: GNav(
-                selectedIndex: ref.read(activeNavTabProvider).toInt(),
+                selectedIndex: ref.watch(activeNavTabProvider).toInt(),
                 padding: const EdgeInsets.all(18),
                 textStyle: GoogleFonts.poppins(
                   fontSize: 16,
@@ -45,7 +45,7 @@ class NavWidget extends ConsumerWidget {
                 activeColor: CColors.mainBlack,
                 tabBackgroundColor: CColors.mainWhite,
                 onTabChange: (index) {
-                  ref.read(activeNavTabProvider.notifier).setState = index;
+                  ref.read(activeNavTabProvider.notifier).toPage(index);
                 },
                 tabs: const [
                   GButton(

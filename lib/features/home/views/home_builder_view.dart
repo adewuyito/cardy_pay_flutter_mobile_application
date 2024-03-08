@@ -7,63 +7,95 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../utils/constants/colors.dart';
+import '../../report/view/report_view.dart';
+import '../provider/active_tab_provider.dart';
 import 'app_bar_widget.dart';
 import 'widget/bottom_nav_widget.dart';
 
 class HomeBuilderView extends ConsumerWidget {
   const HomeBuilderView({super.key});
 
+  final appMainPages = const [
+    HomeView(),
+    ReportView(),
+    AccountView(),
+  ];
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: CColors.mainWhite,
-      appBar: MyAppBar(),
-      bottomNavigationBar: NavWidget(),
-      body: SectionWidget(
-        withLabel: false,
-        children: [
-          AccountBalanceText(balanceText: "13,553.00"),
-          SizedBox(
-            height: 30,
-          ),
-          Flex(
-            direction: Axis.horizontal,
-            children: [
-              Expanded(child: SmallCardWidget()),
-              SizedBox(width: 15),
-              Expanded(child: SmallCardWidget()),
-            ],
-          ),
-          SizedBox(
-            height: 40,
-          ),
-          SectionWidget(
-            secondry: "Today",
-            withPadding: false,
-            withLabel: true,
-            label: "Token Bonus",
-            children: [
-              Flex(
-                mainAxisSize: MainAxisSize.max,
-                direction: Axis.horizontal,
-                children: [
-                  LongCardWidget(),
-                  SizedBox(width: 20),
-                  Flex(
-                    direction: Axis.vertical,
-                    children: [
-                      SmallTokenWidget(),
-                      SizedBox(height: 15),
-                      SmallTokenWidget()
-                    ],
-                  )
-                ],
-              )
-            ],
-          ),
-        ],
+      appBar: const MyAppBar(),
+      bottomNavigationBar: const NavWidget(),
+      body: PageView(
+        controller: ref.watch(activeNavTabProvider.notifier).navController,
+        physics: const NeverScrollableScrollPhysics(),
+        children: [...appMainPages],
       ),
     );
+  }
+}
+
+class HomeView extends StatelessWidget {
+  const HomeView({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const SectionWidget(
+      withLabel: false,
+      children: [
+        AccountBalanceText(balanceText: "13,553.00"),
+        SizedBox(
+          height: 30,
+        ),
+        Flex(
+          direction: Axis.horizontal,
+          children: [
+            Expanded(child: SmallCardWidget()),
+            SizedBox(width: 15),
+            Expanded(child: SmallCardWidget()),
+          ],
+        ),
+        SizedBox(
+          height: 40,
+        ),
+        SectionWidget(
+          secondry: "Today",
+          withPadding: false,
+          withLabel: true,
+          label: "Token Bonus",
+          children: [
+            Flex(
+              mainAxisSize: MainAxisSize.max,
+              direction: Axis.horizontal,
+              children: [
+                LongCardWidget(),
+                SizedBox(width: 20),
+                Flex(
+                  direction: Axis.vertical,
+                  children: [
+                    SmallTokenWidget(),
+                    SizedBox(height: 15),
+                    SmallTokenWidget()
+                  ],
+                )
+              ],
+            )
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class AccountView extends ConsumerWidget {
+  const AccountView({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return const Placeholder();
   }
 }
 
